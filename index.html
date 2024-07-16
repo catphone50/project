@@ -15,15 +15,15 @@
       </a>
 
       <div class="container-button">
-        <button type="button">
+        <button class="language" type="button">
           <img src="./assets/img/eng.svg" alt="Eng" />English
         </button>
-        <button type="button">Log in</button>
-        <button type="button">Sign up</button>
+        <button class="log-in" type="button">Log in</button>
+        <button class="sing-up" type="button">Sign up</button>
       </div>
 
       <form class="search-form header-form">
-        <!-- <img class="left-logo" src="./assets/img/search.svg" alt="search" /> -->
+        <img class="search-logo" src="./assets/img/search.svg" alt="search" />
         <input
           class="search-events"
           type="search"
@@ -34,12 +34,54 @@
           type="search"
           placeholder="Mountain View, CA"
         />
-        <button class="btn-search-submit" type="submit">s</button>
-        <!-- <img class="right-logo" src="./assets/img/search.svg" alt="search" /> -->
+        <button class="btn-search-submit" type="submit">
+          <img src="./assets/img/w-logo-search.svg" alt="search" />
+        </button>
       </form>
     </header>
 
-    <div class="container-content"></div>
+    <div class="container-content">
+      <section class="uns-info">
+        <div class="info-container">
+          <h1>The people platform—Where interests become friendships</h1>
+          <p>
+            Whatever your interest, from hiking and reading to networking and
+            skill sharing, there are thousands of people who share it on Meetup.
+            Events are happening every day—sign up to join the fun.
+          </p>
+          <button class="sing-up" type="button">Join Meetup</button>
+        </div>
+        <img src="./assets/img/img-uns.png" alt="img uns" />
+      </section>
+      <section class="offline-events">
+        <div class="header-selection">
+          <h2>Events near</h2>
+          <form>
+            <input
+              class="mountain-view-section"
+              type="search"
+              placeholder="Mountain View, CA"
+            />
+            <button class="btn-search-section" type="submit">
+              <img src="./assets/img/pen.svg" alt="search" />
+            </button>
+          </form>
+          <button class="see-all-events-btn-offline-events" type="button">
+            See all events
+          </button>
+        </div>
+        <div class="container-event"></div>
+      </section>
+      <section class="online-events">
+        <div class="header-selection">
+          <h2>Upcoming online events</h2>
+          <button class="see-all-events-btn-online-events" type="button">
+            See all events
+          </button>
+        </div>
+        <div class="container-event-online"></div>
+      </section>
+    </div>
     <footer class="container-fotter"></footer>
     <script src="./scripts/index.js"></script>
   </body>
