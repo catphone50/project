@@ -6,7 +6,9 @@ const btnSeeAllOnline = document.querySelector(
 const btnSeeAllOffline = document.querySelector(
   ".see-all-events-btn-offline-events"
 );
-const screenWidth = window.innerWidth;
+
+let screenWidth = window.innerWidth;
+let showEvents = screenWidth >= 768 ? 8 : 3;
 
 const events = [
   {
@@ -278,12 +280,13 @@ function createEventCard(event) {
   const eventDate = document.createElement("div");
   eventDate.className = "event-date";
   eventDate.textContent = event.date;
-  if (screenWidth >= 768) {
-    const iconDate = document.createElement("img");
-    iconDate.src = "/assets/img/date.svg";
-    iconDate.alt = "Online Event Icon";
-    eventDate.appendChild(iconDate);
-  }
+
+  const iconDate = document.createElement("img");
+  iconDate.className = "icon-date";
+  iconDate.src = "/assets/img/date.svg";
+  iconDate.alt = "Online Event Icon";
+  eventDate.appendChild(iconDate);
+
   eventInfo.appendChild(eventDate);
 
   const eventTitle = document.createElement("div");
@@ -296,26 +299,24 @@ function createEventCard(event) {
   eventDetails.textContent = event.details;
   eventInfo.appendChild(eventDetails);
 
-  if (screenWidth >= 768) {
-    const eventWraps = document.createElement("div");
-    eventWraps.className = "event-wraps";
-    const eventPrice = document.createElement("p");
-    const eventVisitors = document.createElement("p");
-    const price = event.price > 0 ? `${event.price} $` : "free";
-    eventPrice.textContent = `${price}`;
-    eventVisitors.textContent = `${event.visitors} going`;
-    const iconPrice = document.createElement("img");
-    const iconVisitors = document.createElement("img");
-    iconPrice.src = "/assets/img/ticket.svg";
-    iconVisitors.src = "/assets/img/visitors.svg";
-    iconPrice.alt = "Online Event Icon";
-    iconVisitors.alt = "Online Event Icon";
-    eventPrice.appendChild(iconPrice);
-    eventVisitors.appendChild(iconVisitors);
-    eventWraps.appendChild(eventVisitors);
-    eventWraps.appendChild(eventPrice);
-    eventInfo.appendChild(eventWraps);
-  }
+  const eventWraps = document.createElement("div");
+  eventWraps.className = "event-wraps";
+  const eventPrice = document.createElement("p");
+  const eventVisitors = document.createElement("p");
+  const price = event.price > 0 ? `${event.price} $` : "free";
+  eventPrice.textContent = `${price}`;
+  eventVisitors.textContent = `${event.visitors} going`;
+  const iconPrice = document.createElement("img");
+  const iconVisitors = document.createElement("img");
+  iconPrice.src = "/assets/img/ticket.svg";
+  iconVisitors.src = "/assets/img/visitors.svg";
+  iconPrice.alt = "Online Event Icon";
+  iconVisitors.alt = "Online Event Icon";
+  eventPrice.appendChild(iconPrice);
+  eventVisitors.appendChild(iconVisitors);
+  eventWraps.appendChild(eventVisitors);
+  eventWraps.appendChild(eventPrice);
+  eventInfo.appendChild(eventWraps);
 
   const eventType = document.createElement("div");
   eventType.textContent = event.type;
@@ -332,31 +333,27 @@ function createEventCard(event) {
   return eventCard;
 }
 
-function renderEventCards(container, EventCards) {
+function renderEventCards(container, eventCards, eventCount) {
   container.innerHTML = "";
-  let showEvents = screenWidth >= 768 ? 8 : 3;
 
-  EventCards.forEach((EventCard, index) => {
-    if (index < showEvents) {
-      container.appendChild(EventCard);
-    } else {
-      EventCard.style.display = "none";
-    }
-  });
-
-  if (showEvents < EventCards.length) {
-    const showMoreButton = document.createElement("button");
-    showMoreButton.textContent = `${
-      EventCards.length - showEvents
-    } attendees more`;
-    showMoreButton.className = "event-count";
-    showMoreButton.addEventListener("click", () => {
-      showMoreEventHandler(EventCards, container);
-      showMoreButton.style.display = "none";
-    });
-    container.appendChild(showMoreButton);
+  for (let i = 0; i < eventCount; i++) {
+    container.appendChild(eventCards[i]);
   }
+
+  // if (showEvents < EventCards.length) {
+  //   const showMoreButton = document.createElement("button");
+  //   showMoreButton.textContent = `${
+  //     EventCards.length - showEvents
+  //   } attendees more`;
+  //   showMoreButton.className = "event-count";
+  //   showMoreButton.addEventListener("click", () => {
+  //     showMoreEventHandler(EventCards, container);
+  //     showMoreButton.style.display = "none";
+  //   });
+  //   container.appendChild(showMoreButton);
+  // }
 }
+
 function showMoreEventHandler(EventCards, container) {
   EventCards.forEach((eventCard) => {
     eventCard.style.display = "flex";
@@ -364,22 +361,16 @@ function showMoreEventHandler(EventCards, container) {
   });
 }
 
-const generateEventCards = (eventArr) => {
-  const eventFilterCards = [];
-  eventArr.forEach((event) => {
-    const eventFilterCard = createEventCard(event);
-    eventFilterCards.push(eventFilterCard);
-  });
-  return eventFilterCards;
-};
+const generateEventCards = (eventArr) =>
+  eventArr.map((event) => createEventCard(event));
 
 const eventOffline = events.filter((event) => event.type === "Offline Event");
 const eventOnline = events.filter((event) => event.type === "Online Event");
 const eventOfflineCards = generateEventCards(eventOffline);
 const eventOnlineCards = generateEventCards(eventOnline);
 
-renderEventCards(eventContainer, eventOfflineCards);
-renderEventCards(eventContainerOnline, eventOnlineCards);
+renderEventCards(eventContainer, eventOfflineCards, showEvents);
+renderEventCards(eventContainerOnline, eventOnlineCards, showEvents);
 
 btnSeeAllOnline.addEventListener("click", () => {
   showMoreEventHandler(eventOnlineCards, eventContainerOnline);
@@ -389,4 +380,11 @@ btnSeeAllOnline.addEventListener("click", () => {
 btnSeeAllOffline.addEventListener("click", () => {
   showMoreEventHandler(eventOfflineCards, eventContainer);
   btnSeeAllOffline.style.display = "none";
+});
+
+window.addEventListener("resize", () => {
+  screenWidth = window.innerWidth;
+  showEvents = screenWidth >= 768 ? 8 : 3;
+  renderEventCards(eventContainer, eventOfflineCards, showEvents);
+  renderEventCards(eventContainerOnline, eventOnlineCards, showEvents);
 });

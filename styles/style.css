@@ -350,6 +350,8 @@ header {
 }
 
 .event-wraps {
+  display: none;
+
   @media (width >= 768px) {
     font-size: 14px;
     display: flex;
@@ -476,6 +478,10 @@ header {
       align-items: flex-start;
     }
   }
+
+  @media (width >= 768px) {
+    max-width: 1200px;
+  }
 }
 
 .cont-cont-join-uns {
@@ -496,4 +502,11 @@ header {
   color: #ffffff;
   border: none;
   border-radius: 8px;
+}
+
+.icon-date {
+  display: none;
+  @media (width >= 768px) {
+    display: block;
+  }
 }
