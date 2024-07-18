@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" type="text/css" href="styles/style.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>Event filtering</title>
+  </head>
+  <body>
+    <header>
+      <a href="./index.html" class="logo">
+        <img src="./assets/img/logo.png" alt="logo" />
+      </a>
+
+      <div class="container-button">
+        <button class="language" type="button">
+          <img src="./assets/img/eng.svg" alt="Eng" />English
+        </button>
+        <button class="log-in" type="button">Log in</button>
+        <button class="sing-up" type="button">Sign up</button>
+      </div>
+
+      <form class="search-form header-form">
+        <img class="search-logo" src="./assets/img/search.svg" alt="search" />
+        <input
+          class="search-events"
+          type="search"
+          placeholder="Search events"
+        />
+        <input
+          class="mountain-view"
+          type="search"
+          placeholder="Mountain View, CA"
+        />
+        <button class="btn-search-submit" type="submit">
+          <img src="./assets/img/w-logo-search.svg" alt="search" />
+        </button>
+      </form>
+    </header>
+
+    <div class="container-content">
+      <h1 class="events-header">Events</h1>
+      <h3 class="sub-events-header">Events</h3>
+      <div class="seleckt-container">
+        <div class="select-wrap">
+          <select name="type">
+            <option value="option1" selected>Any type</option>
+            <option value="option2">Online</option>
+            <option value="option3">Offline</option>
+          </select>
+        </div>
+        <div class="select-wrap">
+          <select name="distance">
+            <option value="option1" selected>Any distance</option>
+            <option value="option2">5 km</option>
+            <option value="option3">10 km</option>
+            <option value="option3">15 km</option>
+            <option value="option3">25 km</option>
+            <option value="option3">50 km</option>
+            <option value="option3">75 km</option>
+            <option value="option3">100 km</option>
+          </select>
+        </div>
+        <div class="select-wrap">
+          <select name="category">
+            <option value="option1" selected>Any category</option>
+            <option value="option2">Social Activities</option>
+            <option value="option3">Hobbies and Passions</option>
+            <option value="option3">Health and Wellbeing</option>
+            <option value="option3">Business</option>
+            <option value="option3">Technology</option>
+            <option value="option3">Art and Culture</option>
+            <option value="option3">Games</option>
+          </select>
+        </div>
+      </div>
+      <div class="container-event"></div>
+    </div>
+
+    <footer class="container-footer">
+      <div class="container-content">
+        <div class="footer-header">
+          <h2>Create your own Meetup group.</h2>
+          <button>Get Started</button>
+        </div>
+        <div class="line"></div>
+        <div class="links-container">
+          <div class="group-links">
+            <h4>Your Account</h4>
+            <a href="!#">Sign up</a>
+            <a href="!#">Log in</a>
+            <a href="!#">Help</a>
+            <a href="!#">Become an Affiliate</a>
+          </div>
+          <div class="group-links">
+            <h4>Discover</h4>
+            <a href="!#">Groups</a>
+            <a href="!#">Calendar</a>
+            <a href="!#">Topics</a>
+            <a href="!#">Cities</a>
+            <a href="!#">Online Events</a>
+            <a href="!#">Local Guides</a>
+            <a href="!#">Make Friends</a>
+          </div>
+          <div class="group-links">
+            <h4>Meetup</h4>
+            <a href="!#">About</a>
+            <a href="!#">Blog</a>
+            <a href="!#">Meetup Pro</a>
+            <a href="!#">Careers</a>
+            <a href="!#">Apps</a>
+            <a href="!#">Podcast</a>
+          </div>
+        </div>
+        <h2 class="header-follow-uns">Follow us</h2>
+        <div class="follow-container">
+          <div class="icon-container">
+            <a href="!#"><img src="./assets/img/Facebook.svg" alt="icon" /></a>
+            <a href="!#"><img src="./assets/img/Twitter.svg" alt="icon" /></a>
+            <a href="!#"><img src="./assets/img/YouTube.svg" alt="icon" /></a>
+            <a href="!#"><img src="./assets/img/Instagram.svg" alt="icon" /></a>
+            <a href="!#"><img src="./assets/img/TikTok.svg" alt="icon" /></a>
+          </div>
+          <div class="app-container">
+            <a href="!#"><img src="./assets/img/GooglePlay.png" alt="app" /></a>
+            <a href="!#"
+              ><img src="./assets/img/download_en-US.png" alt="app"
+            /></a>
+          </div>
+        </div>
+        <div class="links">
+          <a href="!#">© 2024 Meetup</a>
+          <a href="!#">Terms of Service</a>
+          <a href="!#">Privacy Policy</a>
+          <a href="!#">Do Not Sell or Share My Personal Data</a>
+          <a href="!#">Cookie Policy</a>
+          <a href="!#">Help</a>
+        </div>
+      </div>
+    </footer>
+    <script src="./scripts/filter.js"></script>
+  </body>
+</html>

@@ -8,6 +8,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  font-family: "Roboto", sans-serif;
 }
 
 /* HEADER */
@@ -759,12 +760,14 @@ header {
 
   .links {
     width: 100%;
-    color: #fff;
+
     display: flex;
     column-gap: 24px;
 
     a {
       cursor: pointer;
+      text-decoration: none;
+      color: #fff;
     }
 
     a:not(:first-child) {
@@ -774,5 +777,47 @@ header {
         display: block;
       }
     }
+  }
+}
+
+/* ==============================Page 2 ====================================== */
+.events-header {
+  width: 100%;
+  margin-top: 22px;
+}
+.sub-events-header {
+  margin-top: 16px;
+  text-decoration: underline;
+  color: #00798a;
+  width: 100%;
+  /* border-bottom: 2px solid #00798a; */
+}
+.select-wrap {
+  background-color: #f6f7f8;
+  padding-right: 16px;
+  border-radius: 40px;
+}
+
+.seleckt-container {
+  margin-top: 12px;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+
+  select {
+    background-color: #f6f7f8;
+    border: none;
+    border-radius: 40px;
+    padding: 16px;
+  }
+
+  select:focus {
+    outline: none;
+  }
+
+  select:focus option:checked {
+    background-color: #212121;
+    color: #fff;
+    border: none;
   }
 }
