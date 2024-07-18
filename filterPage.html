@@ -47,43 +47,58 @@
       </form>
     </header>
 
-    <div class="container-content">
-      <h1 class="events-header">Events</h1>
-      <h3 class="sub-events-header">Events</h3>
-      <div class="seleckt-container">
-        <div class="select-wrap">
-          <select name="type">
-            <option value="option1" selected>Any type</option>
-            <option value="option2">Online</option>
-            <option value="option3">Offline</option>
-          </select>
+    <div class="container-content-filter">
+      <div class="filter-wrap">
+        <h1 class="events-header">Events</h1>
+        <h3 class="sub-events-header">Events</h3>
+        <div class="seleckt-container">
+          <div class="select-wrap">
+            <select class="type-select" name="type">
+              <option value="any" selected>Any type</option>
+              <option value="online">Online</option>
+              <option value="offline">Offline</option>
+            </select>
+          </div>
+          <div class="select-wrap">
+            <select class="distance-select" name="distance">
+              <option value="any" selected>Any distance</option>
+              <option value="5">5 km</option>
+              <option value="10">10 km</option>
+              <option value="15">15 km</option>
+              <option value="25">25 km</option>
+              <option value="50">50 km</option>
+              <option value="75">75 km</option>
+              <option value="100">100 km</option>
+            </select>
+          </div>
+          <div class="select-wrap">
+            <select class="category-select" name="category">
+              <option value="any" selected>Any category</option>
+              <option value="Social Activities">Social Activities</option>
+              <option value="Hobbies and Passions">Hobbies and Passions</option>
+              <option value="Health and Wellbeing">Health and Wellbeing</option>
+              <option value="Business">Business</option>
+              <option value="Technology">Technology</option>
+              <option value="Art and Culture">Art and Culture</option>
+              <option value="Games">Games</option>
+            </select>
+          </div>
         </div>
-        <div class="select-wrap">
-          <select name="distance">
-            <option value="option1" selected>Any distance</option>
-            <option value="option2">5 km</option>
-            <option value="option3">10 km</option>
-            <option value="option3">15 km</option>
-            <option value="option3">25 km</option>
-            <option value="option3">50 km</option>
-            <option value="option3">75 km</option>
-            <option value="option3">100 km</option>
-          </select>
-        </div>
-        <div class="select-wrap">
-          <select name="category">
-            <option value="option1" selected>Any category</option>
-            <option value="option2">Social Activities</option>
-            <option value="option3">Hobbies and Passions</option>
-            <option value="option3">Health and Wellbeing</option>
-            <option value="option3">Business</option>
-            <option value="option3">Technology</option>
-            <option value="option3">Art and Culture</option>
-            <option value="option3">Games</option>
-          </select>
-        </div>
+        <div class="container-event-filter"></div>
       </div>
-      <div class="container-event"></div>
+      <div class="map-wrap">
+        <p>Find events near</p>
+        <h4>New York, NY</h4>
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387194.0622570156!2d-74.30932678804535!3d40.69701928895477!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2z0J3RjNGOLdCZ0L7RgNC6LCDQodCo0JA!5e0!3m2!1sru!2sde!4v1721338155802!5m2!1sru!2sde"
+          width="300"
+          height="350"
+          style="border: 0"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </div>
     </div>
 
     <footer class="container-footer">
