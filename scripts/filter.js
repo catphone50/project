@@ -374,139 +374,187 @@ const generateEventCards = (eventArr) =>
 
 renderEventCards(eventContainer, generateEventCards(events));
 
-typeSelect.addEventListener("change", (e) => {
-  switch (e.target.value) {
-    case "online":
-      renderEventCards(
-        eventContainer,
-        generateEventCards(
-          events.filter((event) => event.type === "Online Event")
-        )
-      );
-      break;
-    case "offline":
-      renderEventCards(
-        eventContainer,
-        generateEventCards(
-          events.filter((event) => event.type === "Offline Event")
-        )
-      );
-      break;
-    default:
-      renderEventCards(eventContainer, generateEventCards(events));
-      break;
+let selectedType = "any";
+let selectedDistance = "any";
+let selectedCategory = "any";
+
+function filterEvents() {
+  let filteredEvents = events;
+
+  if (selectedType !== "any") {
+    filteredEvents = filteredEvents.filter(
+      (event) => event.type === selectedType
+    );
   }
+
+  if (selectedDistance !== "any") {
+    filteredEvents = filteredEvents.filter(
+      (event) => event.distance === parseInt(selectedDistance, 10)
+    );
+  }
+
+  if (selectedCategory !== "any") {
+    filteredEvents = filteredEvents.filter(
+      (event) => event.category === selectedCategory
+    );
+  }
+
+  renderEventCards(eventContainer, generateEventCards(filteredEvents));
+}
+
+typeSelect.addEventListener("change", (e) => {
+  selectedType =
+    e.target.value === "online"
+      ? "Online Event"
+      : e.target.value === "offline"
+      ? "Offline Event"
+      : "any";
+  filterEvents();
 });
 
 distanceSelect.addEventListener("change", (e) => {
-  console.log(e.target.value);
-
-  switch (e.target.value) {
-    case "5":
-      renderEventCards(
-        eventContainer,
-        generateEventCards(events.filter((event) => event.distance === 5))
-      );
-      break;
-
-    case "10":
-      renderEventCards(
-        eventContainer,
-        generateEventCards(events.filter((event) => event.distance === 10))
-      );
-      break;
-
-    case "15":
-      renderEventCards(
-        eventContainer,
-        generateEventCards(events.filter((event) => event.distance === 15))
-      );
-      break;
-
-    case "25":
-      renderEventCards(
-        eventContainer,
-        generateEventCards(events.filter((event) => event.distance === 25))
-      );
-      break;
-
-    case "75":
-      renderEventCards(
-        eventContainer,
-        generateEventCards(events.filter((event) => event.distance === 75))
-      );
-      break;
-
-    case "50":
-      renderEventCards(
-        eventContainer,
-        generateEventCards(events.filter((event) => event.distance === 50))
-      );
-      break;
-
-    case "100":
-      renderEventCards(
-        eventContainer,
-        generateEventCards(events.filter((event) => event.distance === 100))
-      );
-      break;
-
-    default:
-      renderEventCards(eventContainer, generateEventCards(events));
-      break;
-  }
+  selectedDistance = e.target.value;
+  filterEvents();
 });
 
 categorySelect.addEventListener("change", (e) => {
-  console.log(e.target.value);
-  switch (e.target.value) {
-    case "Social Activities":
-      renderEventCards(
-        eventContainer,
-        generateEventCards(
-          events.filter((event) => event.category === "Social Activities")
-        )
-      );
-      break;
-    case "Hobbies and Passions":
-      renderEventCards(
-        eventContainer,
-        generateEventCards(
-          events.filter((event) => event.category === "Hobbies and Passions")
-        )
-      );
-    case "Health and Wellbeing":
-      renderEventCards(
-        eventContainer,
-        generateEventCards(
-          events.filter((event) => event.category === "Health and Wellbeing")
-        )
-      );
-      break;
-    case "Business":
-      renderEventCards(
-        eventContainer,
-        generateEventCards(
-          events.filter((event) => event.category === "Business")
-        )
-      );
-      break;
-    case "Art and Culture":
-      renderEventCards(
-        eventContainer,
-        generateEventCards(
-          events.filter((event) => event.category === "Art and Culture")
-        )
-      );
-      break;
-    case "Games":
-      renderEventCards(
-        eventContainer,
-        generateEventCards(events.filter((event) => event.category === "Games"))
-      );
-      break;
-    default:
-      renderEventCards(eventContainer, generateEventCards(events));
-      break;
-  }
+  selectedCategory = e.target.value;
+  filterEvents();
 });
+
+// typeSelect.addEventListener("change", (e) => {
+//   switch (e.target.value) {
+//     case "online":
+//       renderEventCards(
+//         eventContainer,
+//         generateEventCards(
+//           events.filter((event) => event.type === "Online Event")
+//         )
+//       );
+//       break;
+//     case "offline":
+//       renderEventCards(
+//         eventContainer,
+//         generateEventCards(
+//           events.filter((event) => event.type === "Offline Event")
+//         )
+//       );
+//       break;
+//     default:
+//       renderEventCards(eventContainer, generateEventCards(events));
+//       break;
+//   }
+// });
+
+// distanceSelect.addEventListener("change", (e) => {
+//   console.log(e.target.value);
+
+//   switch (e.target.value) {
+//     case "5":
+//       renderEventCards(
+//         eventContainer,
+//         generateEventCards(events.filter((event) => event.distance === 5))
+//       );
+//       break;
+
+//     case "10":
+//       renderEventCards(
+//         eventContainer,
+//         generateEventCards(events.filter((event) => event.distance === 10))
+//       );
+//       break;
+
+//     case "15":
+//       renderEventCards(
+//         eventContainer,
+//         generateEventCards(events.filter((event) => event.distance === 15))
+//       );
+//       break;
+
+//     case "25":
+//       renderEventCards(
+//         eventContainer,
+//         generateEventCards(events.filter((event) => event.distance === 25))
+//       );
+//       break;
+
+//     case "75":
+//       renderEventCards(
+//         eventContainer,
+//         generateEventCards(events.filter((event) => event.distance === 75))
+//       );
+//       break;
+
+//     case "50":
+//       renderEventCards(
+//         eventContainer,
+//         generateEventCards(events.filter((event) => event.distance === 50))
+//       );
+//       break;
+
+//     case "100":
+//       renderEventCards(
+//         eventContainer,
+//         generateEventCards(events.filter((event) => event.distance === 100))
+//       );
+//       break;
+
+//     default:
+//       renderEventCards(eventContainer, generateEventCards(events));
+//       break;
+//   }
+// });
+
+// categorySelect.addEventListener("change", (e) => {
+//   console.log(e.target.value);
+//   switch (e.target.value) {
+//     case "Social Activities":
+//       renderEventCards(
+//         eventContainer,
+//         generateEventCards(
+//           events.filter((event) => event.category === "Social Activities")
+//         )
+//       );
+//       break;
+//     case "Hobbies and Passions":
+//       renderEventCards(
+//         eventContainer,
+//         generateEventCards(
+//           events.filter((event) => event.category === "Hobbies and Passions")
+//         )
+//       );
+//     case "Health and Wellbeing":
+//       renderEventCards(
+//         eventContainer,
+//         generateEventCards(
+//           events.filter((event) => event.category === "Health and Wellbeing")
+//         )
+//       );
+//       break;
+//     case "Business":
+//       renderEventCards(
+//         eventContainer,
+//         generateEventCards(
+//           events.filter((event) => event.category === "Business")
+//         )
+//       );
+//       break;
+//     case "Art and Culture":
+//       renderEventCards(
+//         eventContainer,
+//         generateEventCards(
+//           events.filter((event) => event.category === "Art and Culture")
+//         )
+//       );
+//       break;
+//     case "Games":
+//       renderEventCards(
+//         eventContainer,
+//         generateEventCards(events.filter((event) => event.category === "Games"))
+//       );
+//       break;
+//     default:
+//       renderEventCards(eventContainer, generateEventCards(events));
+//       break;
+//   }
+// });
