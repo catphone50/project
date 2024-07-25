@@ -373,19 +373,6 @@ function renderEventCards(container, eventCards, eventCount) {
   for (let i = 0; i < eventCount; i++) {
     container.appendChild(eventCards[i]);
   }
-
-  // if (showEvents < EventCards.length) {
-  //   const showMoreButton = document.createElement("button");
-  //   showMoreButton.textContent = `${
-  //     EventCards.length - showEvents
-  //   } attendees more`;
-  //   showMoreButton.className = "event-count";
-  //   showMoreButton.addEventListener("click", () => {
-  //     showMoreEventHandler(EventCards, container);
-  //     showMoreButton.style.display = "none";
-  //   });
-  //   container.appendChild(showMoreButton);
-  // }
 }
 
 function showMoreEventHandler(EventCards, container) {
